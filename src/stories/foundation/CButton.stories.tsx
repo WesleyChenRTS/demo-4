@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Button, HStack } from "@chakra-ui/react";
+import { Button, ButtonGroup, HStack } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: "Example/CButton",
+    title: "Foundation/Button",
     component: Button,
     // Usage: https://chakra-ui.com/docs/components/button/usage
     argTypes: {
@@ -13,6 +13,12 @@ export default {
             control: {
                 type: "select",
                 options: ["solid", "outline", "ghost", "link", "unstyled"],
+            },
+        },
+        textDecoration: {
+            control: {
+                type: "select",
+                options: ["none", "underline", "line-through", "overline"],
             },
         },
         colorScheme: {
@@ -40,6 +46,26 @@ export default {
                 ],
             },
         },
+        onClick: {
+            control: "function",
+            description: "onClick handler",
+        },
+        isLoading: {
+            control: {
+                type: "boolean",
+            },
+        },
+        loadingText: {
+            control: {
+                type: "text",
+            },
+        },
+        spinnerPlacement: {
+            control: {
+                type: "select",
+                options: ["start", "end"],
+            },
+        },
     },
 } as ComponentMeta<typeof Button>;
 
@@ -47,11 +73,11 @@ const Sizes = ["lg", "md", "sm", "xs"];
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => {
     return (
-        <HStack p="16px">
+        <ButtonGroup spacing="6">
             {Sizes.map((size) => (
                 <Button size={size} {...args} />
             ))}
-        </HStack>
+        </ButtonGroup>
     );
 };
 
