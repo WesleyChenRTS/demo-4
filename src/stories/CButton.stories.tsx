@@ -1,12 +1,49 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Button } from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
     title: "Example/CButton",
     component: Button,
-    // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+    // Usage: https://chakra-ui.com/docs/components/button/usage
+    argTypes: {
+        size: {
+            control: { type: "select", options: ["xs", "sm", "md", "lg"] },
+        },
+        variant: {
+            control: {
+                type: "select",
+                options: ["solid", "outline", "ghost", "link", "unstyled"],
+            },
+        },
+        colorScheme: {
+            control: {
+                type: "select",
+                options: [
+                    "whiteAlpha",
+                    "blackAlpha",
+                    "gray",
+                    "red",
+                    "orange",
+                    "yellow",
+                    "green",
+                    "teal",
+                    "blue",
+                    "cyan",
+                    "purple",
+                    "pink",
+                    "linkedin",
+                    "facebook",
+                    "messenger",
+                    "whatsapp",
+                    "twitter",
+                    "telegram",
+                ],
+            },
+        },
+    },
 } as ComponentMeta<typeof Button>;
 
 const Sizes = ["lg", "md", "sm", "xs"];
@@ -29,9 +66,25 @@ Solid.args = {
     children: "Button",
 };
 
-export const WithShadow = Template.bind({});
-WithShadow.args = {
+export const Custom_WithShadow = Template.bind({});
+Custom_WithShadow.args = {
     colorScheme: "teal",
     variant: "with-shadow",
     children: "Button",
+};
+
+export const WithLeftIcon = Template.bind({});
+WithLeftIcon.args = {
+    colorScheme: "teal",
+    variant: "solid",
+    children: "Email",
+    leftIcon: <EmailIcon />,
+};
+
+export const withRightIcon = Template.bind({});
+withRightIcon.args = {
+    colorScheme: "teal",
+    variant: "solid",
+    children: "Email",
+    rightIcon: <EmailIcon />,
 };
