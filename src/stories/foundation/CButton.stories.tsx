@@ -11,13 +11,13 @@ export default {
     argTypes: {
         variant: {
             control: {
-                type: "select",
+                type: "radio",
                 options: ["solid", "outline", "ghost", "link", "unstyled"],
             },
         },
         textDecoration: {
             control: {
-                type: "select",
+                type: "radio",
                 options: ["none", "underline", "line-through", "overline"],
             },
         },
@@ -50,6 +50,14 @@ export default {
             control: "function",
             description: "onClick handler",
         },
+        onMouseEnter: {
+            control: "function",
+            description: "onMouseEnter handler",
+        },
+        onMouseLeave: {
+            control: "function",
+            description: "onMouseLeave handler",
+        },
         isLoading: {
             control: {
                 type: "boolean",
@@ -65,6 +73,11 @@ export default {
                 type: "select",
                 options: ["start", "end"],
             },
+        },
+    },
+    parameters: {
+        actions: {
+            handles: ["click", "mouseenter", "mouseleave"],
         },
     },
 } as ComponentMeta<typeof Button>;
