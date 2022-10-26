@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Button } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -9,9 +9,6 @@ export default {
     component: Button,
     // Usage: https://chakra-ui.com/docs/components/button/usage
     argTypes: {
-        size: {
-            control: { type: "select", options: ["xs", "sm", "md", "lg"] },
-        },
         variant: {
             control: {
                 type: "select",
@@ -50,11 +47,11 @@ const Sizes = ["lg", "md", "sm", "xs"];
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Button> = (args) => {
     return (
-        <div>
+        <HStack p="16px">
             {Sizes.map((size) => (
                 <Button size={size} {...args} />
             ))}
-        </div>
+        </HStack>
     );
 };
 
@@ -63,13 +60,6 @@ export const Solid = Template.bind({});
 Solid.args = {
     colorScheme: "teal",
     variant: "solid",
-    children: "Button",
-};
-
-export const Custom_WithShadow = Template.bind({});
-Custom_WithShadow.args = {
-    colorScheme: "teal",
-    variant: "with-shadow",
     children: "Button",
 };
 
